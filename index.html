@@ -3,75 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rama Kadri - Interactive CV</title>
+    <title>Rama Kadri - Food Safety & QA Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid theme('colors.slate.200');
-            margin-left: 1.5rem;
-            cursor: pointer;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background-color: theme('colors.teal.500');
-            border-radius: 9999px;
-            border: 4px solid theme('colors.white');
-        }
-        .timeline-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .timeline-details.open {
-            max-height: 500px;
-            transition: max-height 0.5s ease-in;
-        }
-        .arrow-icon {
-            transition: transform 0.3s ease-out;
-        }
-        .arrow-icon.rotated {
-            transform: rotate(90deg);
-        }
-        @media print {
-            .timeline-details {
-                max-height: none !important;
-                overflow: visible !important;
-            }
-            .arrow-icon {
-                display: none !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 500px; margin: auto; height: 350px; }
+        .timeline-item { position: relative; padding-left: 2rem; border-left: 2px solid theme('colors.slate.200'); margin-left: 1.5rem; cursor: pointer; }
+        .timeline-item::before { content: ''; position: absolute; left: -8px; top: 0; width: 16px; height: 16px; background-color: theme('colors.teal-500'); border-radius: 9999px; border: 4px solid white; }
+        .timeline-details { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .timeline-details.open { max-height: 500px; }
+        .arrow-icon { transition: transform 0.3s ease-out; }
+        .arrow-icon.rotated { transform: rotate(90deg); }
+        @media print { .no-print { display: none !important; } .timeline-details { max-height: none !important; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -80,40 +27,36 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-teal-600">Rama Kadri</div>
             <div class="hidden md:flex space-x-8">
-                <a href="#summary" class="text-slate-600 hover:text-teal-600 transition duration-300">Summary</a>
-                <a href="#experience" class="text-slate-600 hover:text-teal-600 transition duration-300">Experience</a>
-                <a href="#skills" class="text-slate-600 hover:text-teal-600 transition duration-300">Skills</a>
-                <a href="#education" class="text-slate-600 hover:text-teal-600 transition duration-300">Education</a>
-                <a href="#interests" class="text-slate-600 hover:text-teal-600 transition duration-300">Interests</a>
+                <a href="#summary" class="hover:text-teal-600 transition">Summary</a>
+                <a href="#experience" class="hover:text-teal-600 transition">Experience</a>
+                <a href="#skills" class="hover:text-teal-600 transition">Skills</a>
+                <a href="#education" class="hover:text-teal-600 transition">Education</a>
+                <a href="#interests" class="hover:text-teal-600 transition">Interests</a>
             </div>
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-slate-600 focus:outline-none">
-                   <div class="w-6 h-0.5 bg-slate-600 mb-1.5"></div>
-                   <div class="w-6 h-0.5 bg-slate-600 mb-1.5"></div>
-                   <div class="w-6 h-0.5 bg-slate-600"></div>
-                </button>
-            </div>
+            <button id="menu-btn" class="md:hidden text-slate-600">
+                <div class="w-6 h-0.5 bg-slate-600 mb-1.5"></div>
+                <div class="w-6 h-0.5 bg-slate-600 mb-1.5"></div>
+                <div class="w-6 h-0.5 bg-slate-600"></div>
+            </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#summary" class="block py-2 px-4 text-sm text-slate-600 hover:bg-teal-50">Summary</a>
-            <a href="#experience" class="block py-2 px-4 text-sm text-slate-600 hover:bg-teal-50">Experience</a>
-            <a href="#skills" class="block py-2 px-4 text-sm text-slate-600 hover:bg-teal-50">Skills</a>
-            <a href="#education" class="block py-2 px-4 text-sm text-slate-600 hover:bg-teal-50">Education</a>
-            <a href="#interests" class="block py-2 px-4 text-sm text-slate-600 hover:bg-teal-50">Interests</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100">
+            <a href="#summary" class="block py-3 px-6 hover:bg-teal-50">Summary</a>
+            <a href="#experience" class="block py-3 px-6 hover:bg-teal-50">Experience</a>
+            <a href="#skills" class="block py-3 px-6 hover:bg-teal-50">Skills</a>
+            <a href="#education" class="block py-3 px-6 hover:bg-teal-50">Education</a>
+            <a href="#interests" class="block py-3 px-6 hover:bg-teal-50">Interests</a>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-12">
-        <section id="summary" class="min-h-[60vh] flex items-center">
-            <div class="w-full flex flex-col md:flex-row-reverse md:justify-between md:items-start text-center md:text-left">
-                <div class="flex-shrink-0 mb-6 md:mb-0 md:ml-24">
-                    <img src="./Rama.jpg" alt="Rama Kadri's professional headshot" class="w-96 h-96 md:w-128 md:h-128 rounded-full object-cover mx-auto shadow-lg">
-                </div>
+        <section id="summary" class="min-h-[50vh] flex items-center mb-16">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <img src="./Rama.jpg" alt="Rama Kadri" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-white">
                 <div>
-                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Rama Kadri</h1>
-                    <p class="text-xl md:text-2xl text-teal-600 mt-2">Quality Assurance, Quality Control, and Food Safety Specialist</p>
-                    <p class="mt-6 max-w-3xl mx-auto md:mx-0 text-slate-600 leading-relaxed">
-                        A skilled professional with a strong academic background in Quality Assurance, Quality Control, and Food Safety. Holding an MSc in Food Technology and Processing from DTU and a Bachelor's in Food Technology Engineering, my practical experience includes roles at Fødevarestyrelsen, Arla Foods, and AQM. I am dedicated to contributing to and elevating quality standards and food safety within a dynamic work environment.
+                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900">Rama Kadri</h1>
+                    <p class="text-xl md:text-2xl text-teal-600 font-medium mt-2">Quality Assurance, Quality Control, and Food Safety Specialist</p>
+                    <p class="mt-6 text-slate-600 leading-relaxed max-w-2xl">
+                        Dedicated Food Technology Specialist with an MSc from DTU and extensive practical experience within the Danish food regulatory framework. Expert in Danish Food Legislation through roles at Fødevarestyrelsen and industrial quality control at Arla Foods. Specialized in shelf-life extension, HACCP, and ISO standards. Fluent in Danish (Dansk 3) and English, bringing a blend of academic excellence and hands-on operational expertise.
                     </p>
                 </div>
             </div>
@@ -124,107 +67,122 @@
             <div class="max-w-3xl mx-auto" id="experience-container"></div>
         </section>
 
-        <section id="skills" class="py-16 bg-white rounded-lg shadow-md">
-            <h2 class="text-3xl font-bold text-center mb-12">Skills & Certifications</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+        <section id="skills" class="py-16 bg-white rounded-2xl shadow-sm border border-slate-100">
+            <h2 class="text-3xl font-bold text-center mb-12">Expertise & Certifications</h2>
+            <div class="grid md:grid-cols-2 gap-12 px-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-6 text-center">Core Competencies</h3>
-                    <div class="chart-container h-96 md:h-[400px]">
+                    <h3 class="text-xl font-bold mb-6 text-teal-700">Competency Mapping</h3>
+                    <div class="chart-container">
                         <canvas id="skillsChart"></canvas>
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Top Skills</h3>
-                    <ul class="space-y-2 text-slate-600 list-disc list-inside">
-                        <li>Food Safety Management</li>
-                        <li>Hazard Identification</li>
-                        <li>Critical Control Point (CCP) Monitoring</li>
-                    </ul>
-
-                    <h3 class="text-xl font-bold mt-8 mb-4">Certifications</h3>
-                    <ul class="space-y-2 text-slate-600 list-disc list-inside">
-                        <li>Quality Management System Auditor (QMSA)</li>
-                        <li>ISO 9001: Quality Management Systems</li>
-                        <li>HACCP Training</li>
-                        <li>Quality Inspector of Food Quality and Safety (HACCP & ISO Standards)</li>
-                        <li>ISO 22000: Food Safety Management Systems</li>
-                    </ul>
-
-                    <h3 class="text-xl font-bold mt-8 mb-4">Languages</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="font-medium">Arabic <span class="text-sm text-slate-500 float-right">Native</span></p>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5"><div class="bg-teal-500 h-2.5 rounded-full" style="width: 100%"></div></div>
-                        </div>
-                        <div>
-                            <p class="font-medium">Danish <span class="text-sm text-slate-500 float-right">Full Professional</span></p>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5"><div class="bg-teal-500 h-2.5 rounded-full" style="width: 90%"></div></div>
-                        </div>
-                        <div>
-                            <p class="font-medium">English <span class="text-sm text-slate-500 float-right">Professional Working</span></p>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5"><div class="bg-teal-500 h-2.5 rounded-full" style="width: 80%"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="py-16">
-            <h2 class="text-3xl font-bold text-center mb-12">Education & Publications</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4 text-teal-600">Education</h3>
-                    <div class="mb-4">
-                        <p class="font-bold">Master of Science - MS, Food Technology and Processing</p>
-                        <p class="text-slate-600">DTU - Technical University of Denmark</p>
-                        <p class="text-sm text-slate-500">February 2022 – August 2025</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">Bachelor's degree, Food Technology engineering</p>
-                        <p class="text-slate-600">Aleppo University</p>
-                        <p class="text-sm text-slate-500">2010 – 2015</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4 text-teal-600">Publications & Awards</h3>
-                    <div class="mb-4">
-                        <p class="font-bold">Publication</p>
-                        <p class="text-slate-600 italic">"Extending Shelf Life and Boosting Food Safety with Natural Antimicrobials and Chia Seed Gel for Bread"</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">Honors & Awards</p>
-                        <ul class="list-disc list-inside text-slate-600">
-                            <li>Arla Food Letter of Recommendation</li>
-                            <li>Qualitas International UK Letter of recommendation</li>
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-teal-700">Technical Proficiencies</h3>
+                        <ul class="grid grid-cols-1 gap-2 text-slate-600">
+                            <li class="flex items-center gap-2"><b>Regulatory:</b> Smiley-scheme, EU Food Law, Grænsekontrol</li>
+                            <li class="flex items-center gap-2"><b>Management:</b> HACCP, ISO 22000, ISO 9001, Internal Auditing</li>
+                            <li class="flex items-center gap-2"><b>Lab/R&D:</b> Micro analysis, Shelf-life, Natural Antimicrobials</li>
+                            <li class="flex items-center gap-2"><b>Ops:</b> Process optimization, CCP monitoring, FSMS</li>
                         </ul>
                     </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-teal-700">Languages</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1"><span>Danish (Dansk 3)</span><span class="text-slate-500 text-sm">Full Professional</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full"><div class="bg-teal-500 h-2 rounded-full" style="width: 95%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1"><span>English</span><span class="text-slate-500 text-sm">Full Professional</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full"><div class="bg-teal-500 h-2 rounded-full" style="width: 95%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1"><span>Arabic</span><span class="text-slate-500 text-sm">Native</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full"><div class="bg-teal-500 h-2 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="interests" class="py-16 bg-white rounded-lg shadow-md mt-12">
+        <section id="education" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-12">Education & Career Milestones</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-6 text-teal-600 flex items-center gap-2">Academic Background</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-bold text-slate-900">MSc in Food Technology and Processing</p>
+                            <p class="text-teal-600">Technical University of Denmark (DTU)</p>
+                            <p class="text-sm text-slate-500">2022 – 2026</p>
+                            <p class="text-sm mt-2 italic text-slate-600">Thesis: Extending Shelf Life and Boosting Food Safety with Natural Antimicrobials and Chia Seed Gel for Bread.</p>
+                        </div>
+                        <div class="border-l-4 border-teal-100 pl-4 py-1">
+                            <p class="font-bold text-slate-700 italic">Maternity Leave (Barselsorlov)</p>
+                            <p class="text-sm text-slate-500">2024 – 2025 | Planned career break</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">Bachelor of Engineering in Food Technology</p>
+                            <p class="text-teal-600">Aleppo University</p>
+                            <p class="text-sm text-slate-500">2010 – 2015</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-6 text-teal-600">Certifications & Publications</h3>
+                    <div class="space-y-6 text-slate-600">
+                        <div>
+                            <p class="font-bold text-slate-900 mb-2">Key Certifications</p>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>ISO 9001/22000 Auditor</li>
+                                <li>HACCP Specialist Training</li>
+                                <li>QMSA Quality Manager</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 mb-1">Featured Publication</p>
+                            <p class="text-sm italic">"Extending Shelf Life with Natural Antimicrobials" (Focus on Bakery Innovation)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 mb-1">Recommendations</p>
+                            <p class="text-sm">Official letters from Arla Foods and Qualitas International UK available upon request.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests" class="py-16 bg-teal-50 rounded-2xl">
             <h2 class="text-3xl font-bold text-center mb-8">Personal Interests</h2>
             <div class="max-w-3xl mx-auto px-6">
-                <p class="text-slate-600 leading-relaxed text-center italic">
-                    Living in Copenhagen with my family, I prioritize a healthy work-life balance and an active lifestyle. 
+                <p class="text-slate-700 leading-relaxed text-center italic">
+                    "Living in Copenhagen with my family, I prioritize a healthy work-life balance and an active lifestyle. 
                     I am an avid reader, enjoying both professional literature to stay updated on food science trends and 
                     classic literature for personal growth. When not reading, I enjoy exploring the outdoors and 
                     experimenting with culinary techniques that blend my technical background with a love for cooking. 
-                    I am a social person who values transparency and a positive team culture.
+                    I am a social person who values transparency and a positive team culture."
                 </p>
             </div>
         </section>
-        
     </main>
-    
-    <footer id="contact" class="bg-slate-800 text-white py-12">
+
+    <footer id="contact" class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-6 text-center">
-             <h2 class="text-2xl font-bold mb-4">Get In Touch</h2>
-             <p class="mb-2">Copenhagen, Denmark</p>
-             <p class="mb-4"><a href="mailto:ramakadre@gmail.com" class="hover:text-teal-400 transition duration-300">ramakadre@gmail.com</a></p>
-             <a href="https://www.linkedin.com/in/rama-kadri-116901189" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-white transition duration-300">
-                LinkedIn Profile
-             </a>
+            <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
+            <div class="flex flex-wrap justify-center gap-8 mb-8 text-lg">
+                <a href="mailto:ramakadre@gmail.com" class="hover:text-teal-400">ramakadre@gmail.com</a>
+                <span class="text-slate-600">|</span>
+                <span>+45 91 77 00 66</span>
+                <span class="text-slate-600">|</span>
+                <span>Copenhagen, Denmark</span>
+            </div>
+            <div class="flex justify-center gap-6">
+                <a href="http://linkedin.com/in/rama-kadri-116901189" target="_blank" class="bg-teal-600 px-6 py-2 rounded-full hover:bg-teal-500 transition">LinkedIn Profile</a>
+                <a href="https://rama-kadri.github.io/cv/" class="border border-slate-700 px-6 py-2 rounded-full hover:bg-slate-800 transition">Portfolio Website</a>
+            </div>
         </div>
     </footer>
 
@@ -232,146 +190,89 @@
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
             const experienceData = [
                 {
-                    role: "Quality Assurance Quality Control",
+                    role: "Food Safety & Control Associate (IGU)",
                     company: "Fødevarestyrelsen",
-                    location: "Arhus Area, Denmark",
-                    period: "June 2019 – July 2021",
-                    duration: "2 years 2 months",
+                    location: "Copenhagen/Port Locations",
+                    period: "2019 – 2021",
                     details: [
-                        "Monitored and ensured compliance with food safety and quality standards.",
-                        "Conducted internal audits for ISO and HACCP compliance.",
-                        "Supported production teams in process improvement and quality enhancement.",
-                        "Prepared analytical reports with recommendations for quality improvement."
+                        "Detailkontrol (Smiley-scheme): Conducted official hygiene and legal inspections of food businesses.",
+                        "Grænsekontrol (Border Control Post): Safety inspections of imported seafood and food products.",
+                        "Sampling: Coordinated official chemical/microbiological testing with laboratories.",
+                        "Auditing: Verified industrial adherence to HACCP and ISO standards."
                     ]
                 },
                 {
-                    role: "Internship Trainee",
+                    role: "Production & Quality Intern (Mejeri)",
                     company: "Arla Foods",
                     location: "Gjesing, Denmark",
-                    period: "February 2019 – May 2019",
-                    duration: "4 months",
+                    period: "Jan 2019 – May 2019",
                     details: [
-                        "Assisted in daily production to ensure product quality standards.",
-                        "Conducted ongoing quality testing on products and raw materials.",
-                        "Collaborated with production teams to identify issues and improve processes."
+                        "Ensured dairy production compliance with global quality standards.",
+                        "Monitored Critical Control Points (CCPs) on the production line.",
+                        "Conducted laboratory testing on raw materials and finished products."
                     ]
                 },
                 {
                     role: "Quality Control Specialist",
-                    company: "AQM: Arab Quality Makers",
-                    location: "Aleppo, Syria",
-                    period: "February 2016 – January 2018",
-                    duration: "2 years",
+                    company: "Arab Quality Makers (AQM)",
+                    location: "Aleppo",
+                    period: "2016 – 2018",
                     details: [
-                        "Implemented quality control procedures for final products and raw materials.",
-                        "Developed and improved testing procedures to ensure product compliance.",
-                        "Prepared regular quality performance reports for management and technical teams."
-                    ]
-                },
-                {
-                    role: "Laboratory Analyst",
-                    company: "Aleppo University",
-                    location: "Aleppo, Syria",
-                    period: "2014 – 2015",
-                    duration: "1 year",
-                    details: [
-                        "Conducted various laboratory tests on food and beverage samples.",
-                        "Analyzed results and provided recommendations for product quality improvement.",
-                        "Collaborated with academic teams to apply up-to-date scientific standards."
+                        "Implemented QC procedures for raw materials and final products via ISO 9001.",
+                        "Developed standardized testing protocols for technical performance.",
+                        "Authored regular technical quality reports for management."
                     ]
                 }
             ];
 
-            const experienceContainer = document.getElementById('experience-container');
+            const container = document.getElementById('experience-container');
             experienceData.forEach(job => {
-                const jobItem = document.createElement('div');
-                jobItem.className = 'timeline-item py-6 pr-4';
-                
-                jobItem.innerHTML = `
-                    <div class="flex justify-between items-center pr-6">
-                        <div class="flex-grow">
-                            <h3 class="font-bold text-lg">${job.role}</h3>
-                            <p class="text-sm font-medium text-slate-600">${job.company} - <span class="text-slate-500">${job.location}</span></p>
-                            <p class="text-xs text-slate-400 mt-1">${job.period}</p>
-                        </div>
+                const div = document.createElement('div');
+                div.className = 'timeline-item py-6 pr-4';
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
                         <div>
-                           <div class="arrow-icon w-4 h-4 text-slate-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                </svg>
-                           </div>
+                            <h3 class="font-bold text-lg text-slate-900">${job.role}</h3>
+                            <p class="text-teal-600 font-medium">${job.company} <span class="text-slate-400 font-normal">| ${job.location}</span></p>
+                            <p class="text-xs text-slate-500 mt-1 uppercase tracking-wider">${job.period}</p>
+                        </div>
+                        <div class="arrow-icon w-5 h-5 text-slate-300">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
                         </div>
                     </div>
-                    <div class="timeline-details mt-4 pl-8">
+                    <div class="timeline-details mt-4 pl-4 border-l-2 border-teal-50">
                         <ul class="list-disc list-inside text-sm text-slate-600 space-y-2">
                             ${job.details.map(d => `<li>${d}</li>`).join('')}
                         </ul>
                     </div>
                 `;
-                
-                jobItem.addEventListener('click', () => {
-                    const details = jobItem.querySelector('.timeline-details');
-                    const arrow = jobItem.querySelector('.arrow-icon');
-                    details.classList.toggle('open');
-                    arrow.classList.toggle('rotated');
+                div.addEventListener('click', () => {
+                    div.querySelector('.timeline-details').classList.toggle('open');
+                    div.querySelector('.arrow-icon').classList.toggle('rotated');
                 });
-
-                experienceContainer.appendChild(jobItem);
+                container.appendChild(div);
             });
-            
+
             const ctx = document.getElementById('skillsChart').getContext('2d');
-            const skillsChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'radar',
                 data: {
-                    labels: ['Quality Assurance', 'Food Safety Mgt.', 'HACCP', 'ISO Standards', 'Lab Analysis', 'Process Improvement'],
+                    labels: ['Regulatory Law', 'HACCP/CCP', 'ISO 22000', 'Lab Analysis', 'Auditing', 'Danish Legislation'],
                     datasets: [{
-                        label: 'Proficiency',
-                        data: [90, 95, 85, 88, 92, 80],
+                        data: [95, 92, 88, 90, 85, 94],
                         backgroundColor: 'rgba(20, 184, 166, 0.2)',
-                        borderColor: 'rgba(13, 148, 136, 1)',
-                        pointBackgroundColor: 'rgba(13, 148, 136, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(13, 148, 136, 1)'
+                        borderColor: '#0d9488',
+                        pointBackgroundColor: '#0d9488'
                     }]
                 },
-                options: {
+                options: { 
                     maintainAspectRatio: false,
-                    responsive: true,
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 12
-                                },
-                                color: '#334155'
-                            },
-                            ticks: {
-                                backdropColor: 'rgba(255, 255, 255, 0.75)',
-                                color: '#64748b'
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
+                    scales: { r: { suggestedMin: 50, ticks: { display: false } } },
+                    plugins: { legend: { display: false } }
                 }
             });
         });
